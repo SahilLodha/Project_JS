@@ -1,11 +1,18 @@
 let  myTransferObject, count = 0, expense_value = 0, income_value = 0, total_value = 0;
 let cookie_data = {};
+let spinnerWrapper = document.querySelector('#spinner-wrapper');
+let spinner = document.getElementById('spinner');
+
+function removeSpinner(){
+    spinnerWrapper.remove();
+}
+
+setTimeout(removeSpinner, 500);
 
 function loader(){
     console.log(cookie_data)
     for (all in cookie_data){
         if(all !== 'count'){
-            console.log(cookie_data[all])
             appendToTransfer(cookie_data[all]);
         }
         else{
@@ -13,12 +20,15 @@ function loader(){
         }
     }
     calculate_total()
+
 }
 
 window.onload = ()=>{
     let data_list = document.cookie.split('=');
-    cookie_data = JSON.parse(data_list[1]);
-    loader();
+    if(data_list.length>0){
+        cookie_data = JSON.parse(data_list[1]);
+        loader();
+    }
 }
 
 // Transfer Form Input Feilds
