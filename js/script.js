@@ -1,6 +1,26 @@
 let  myTransferObject, count = 0, expense_value = 0, income_value = 0, total_value = 0;
 let cookie_data = {};
 
+function loader(){
+    console.log(cookie_data)
+    for (all in cookie_data){
+        if(all !== 'count'){
+            console.log(cookie_data[all])
+            appendToTransfer(cookie_data[all]);
+        }
+        else{
+            count = cookie_data[all]
+        }
+    }
+    calculate_total()
+}
+
+window.onload = ()=>{
+    let data_list = document.cookie.split('=');
+    cookie_data = JSON.parse(data_list[1]);
+    loader();
+}
+
 // Transfer Form Input Feilds
 const addRecord_btn = document.getElementById('addTransferRecord');
 const expenseName = document.getElementById('ExpenseName-input');
@@ -61,7 +81,7 @@ function appendToTransfer(object){
     button_delete.classList.add('btn-danger');
     button_delete.classList.add('delete_row');
     tabledelete_btn.appendChild(button_delete);
-
+    console.log(object)
     tabledata_Id.innerText = object.id;
     tabledata_Name.innerText = object.name;
     tabledata_value.innerText = object.amount;
@@ -120,7 +140,7 @@ function calculate_total(){
 // Cookie Edit saves a new cookie. This Happens each time a value is added or removed freom the cookie data object created.
 function cookie_edit(){
     cookie_data['count'] = count;
-    document.cookie = "details="+cookie_data.toString()+";";
+    document.cookie = "details="+JSON.stringify(cookie_data)+";"+"Max-Age="+(60*60*24*7);
 }
 
 addRecord_btn.addEventListener('click', addToTransfer);
