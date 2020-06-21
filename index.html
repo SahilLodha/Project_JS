@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Budget App</title>
+
+    <!--  Vendor Files import  -->
+    <link rel="stylesheet" href="./vendors/bootstrap/css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="./vendors/fontawesome/css/fontawesome.min.css" type="text/css">
+
+    <!--  Custom File Imports -->
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+
+<div class="row m-0 p-0">
+
+    <div class="col-md-7 m-1 text-center custom-box" id="expenseandgain">
+        <h2 class="p-3">Transfers</h2>
+        <div class="scrollable-div">
+            <table class="table table-bordered  ">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Transfer Name</th>
+                    <th scope="col">Type Of Transfer</th>
+                    <th scope="col">Transfer Value</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody id="transferTableBody">
+
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <h3 class="text-right pr-3 pt-3">Total : <span id="transfer-Value">0</span></h3>
+        </div>
+    </div>
+
+    <div class="col-md m-1 text-center custom-box" id="userinput">
+        <h2 class="p-3">User Input</h2>
+        <div class="pb-0 border-bottom">
+            <form>
+                <div class="row p-1">
+                    <label for="ExpenseName-input" class="col-md-3 text-left">Transaction Name: </label>
+                    <input type="text" id="ExpenseName-input" class="custom-inputs col-md-8"
+                           placeholder="Word Describing Expense e.g., Clothing">
+                </div>
+
+                <div class="row p-1">
+                    <label for="amount-input" class="col-md-3 text-left">Amount: </label>
+                    <input type="text" id="amount-input" class="custom-inputs col-md-8"
+                           placeholder="Numerical Value (Nepalese Currency Only)">
+                </div>
+
+                <div class="row p-1">
+                    <label for="transfer-type-input" class="col-md-3 text-left">Type: </label>
+                    <select name="" id="transfer-type-input" class="custom-select col-md-8">
+                        <option value="" selected> -- Select --</option>
+                        <option value="income">Income</option>
+                        <option value="expense">Expenditure</option>
+                    </select>
+                </div>
+
+                <button class="btn btn-warning m-3 mb-2" id="addTransferRecord" type="button">Add Values</button>
+            </form>
+        </div>
+
+        <div class="row">
+            <div class="col-md text-right custom-cost" id="expense">
+                <span id="income-value"></span>
+            </div>
+
+            <div class="col-md text-left custom-cost" id="income">
+                <span id="expense-value"></span>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="./js/script.js"></script>
+
+</body>
+</html>
